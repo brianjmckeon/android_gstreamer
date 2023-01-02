@@ -9,12 +9,23 @@ android {
 
     defaultConfig {
         applicationId "com.github.brianjmckeon.template"
-        minSdk 32
-        targetSdk 32
+        minSdk 28
+        targetSdk 31
         versionCode 1
         versionName "1.0"
+        ndkVersion = '21.4.7075529'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            ndkBuild {
+                def gstRoot = '../../gstreamer'
+                arguments "NDK_APPLICATION_MK=src/gstreamer/Application.mk", "GSTREAMER_JAVA_SRC_DIR=src",
+                        "GSTREAMER_ROOT_ANDROID=$gstRoot", "GSTREAMER_ASSETS_DIR=src/assets"
+                targets 'template'
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
+            }
+        }
     }
 
     buildTypes {
@@ -23,22 +34,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/gstreamer/Android.mk'
+        }
     }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+//    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }
