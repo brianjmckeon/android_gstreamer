@@ -20,9 +20,11 @@ android {
         externalNativeBuild {
             ndkBuild {
                 def gstRoot = '../../gstreamer'
-                arguments "NDK_APPLICATION_MK=src/gstreamer/Application.mk", "GSTREAMER_JAVA_SRC_DIR=src/main/java",
-                        "GSTREAMER_ROOT_ANDROID=$gstRoot", "GSTREAMER_ASSETS_DIR=src/gstreamer/assets",
-                        "GSTREAMER_ANDROID_BUILD_DIR=$buildDir/gstreamer", "GSTREAMER_INCLUDE_FONTS=no"
+                arguments "NDK_APPLICATION_MK=src/main/gstreamer/Application.mk",
+                        "GSTREAMER_ROOT_ANDROID=$gstRoot",
+                        "GSTREAMER_ANDROID_BUILD_DIR=$buildDir/gstreamer",
+                        "GSTREAMER_INCLUDE_FONTS=no",
+                        "GSTREAMER_INCLUDE_CA_CERTIFICATES=no"
                 targets 'template'
                 abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
             }
@@ -47,7 +49,7 @@ android {
 
     externalNativeBuild {
         ndkBuild {
-            path 'src/gstreamer/Android.mk'
+            path 'src/main/gstreamer/Android.mk'
         }
     }
 }
