@@ -22,9 +22,9 @@ android {
                 def gstRoot = '../../gstreamer'
                 arguments "NDK_APPLICATION_MK=src/gstreamer/Application.mk", "GSTREAMER_JAVA_SRC_DIR=src/main/java",
                         "GSTREAMER_ROOT_ANDROID=$gstRoot", "GSTREAMER_ASSETS_DIR=src/gstreamer/assets",
-                        "GSTREAMER_ANDROID_BUILD_DIR=$buildDir/gstreamer"
+                        "GSTREAMER_ANDROID_BUILD_DIR=$buildDir/gstreamer", "GSTREAMER_INCLUDE_FONTS=no"
                 targets 'template'
-                abiFilters 'armeabi-v7a', 'arm64-v8a'
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
             }
         }
     }
