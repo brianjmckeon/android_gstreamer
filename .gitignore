@@ -3,4 +3,5 @@
 
 # Ignore files in gstreamer by default.
 gstreamer
-
+!gstreamer/arm64/share/gst-android/ndk-build/gstreamer-1.0.mk
+!gstreamer/armv7/share/gst-android/ndk-build/gstreamer-1.0.mk
