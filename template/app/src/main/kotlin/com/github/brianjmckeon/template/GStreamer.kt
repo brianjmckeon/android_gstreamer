@@ -5,7 +5,7 @@ import android.content.Context
 abstract class GStreamer {
     companion object {
         @JvmStatic
-        private external fun nativeGetGStreamerInfo(): String?
+        private external fun nativeGetGStreamerInfo(): String
 
         fun init(context: Context) {
             try {
@@ -13,11 +13,11 @@ abstract class GStreamer {
                 System.loadLibrary("template")
                 org.freedesktop.gstreamer.GStreamer.init(context)
             } catch (e: Exception) {
-                println("Couldn't init GStreamer: [$e]")
+                Logger.e("Couldn't start GStreamer", e)
             }
         }
 
-        fun version(): String? {
+        fun version(): String {
             return nativeGetGStreamerInfo()
         }
     }

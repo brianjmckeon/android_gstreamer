@@ -7,7 +7,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("GStreamer version: [${GStreamer.version()}]")
+        Logger.i("GStreamer version: [${GStreamer.version()}]")
         setContentView(R.layout.activity_main)
     }
 }
