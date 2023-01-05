@@ -1,5 +1,6 @@
 **.DS_Store
 **.idea/
+*.o
 
 # Ignore files in gstreamer by default.
 gstreamer
